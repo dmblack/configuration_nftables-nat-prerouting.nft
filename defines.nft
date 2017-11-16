@@ -1,0 +1,24 @@
+# Server
+define nic_inet_wan = eth1
+define nic_inet_lan = eth2
+
+# Common
+define nic_inet_lo = lo
+
+# Lan Interface
+define interface_lan = $nic_inet_lan
+define interface_wan = $nic_inet_wan
+
+# Define Services
+define service_jenkins = { 58080 }
+define service_torrents = { 59590 }
+define service_vpn = { 500 , 1701 , 1723 , 4500 }
+define service_minecraft = { 25565 }
+define service_destiny = { 3074 , 3097 }
+
+# Define Hosts
+define host_jenkins = 192.168.1.174
+define host_torrents = 192.168.1.102
+define host_vpn = 192.168.1.100
+define host_minecraft = 192.168.1.190
+define host_destiny = 192.168.1.167

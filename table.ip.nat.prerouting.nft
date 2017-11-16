@@ -1,0 +1,16 @@
+chain prerouting {
+    type nat hook prerouting priority 0
+
+    # count our traffic.
+    jump counter-total
+
+    # Allow VPN
+    iif $interface_wan tcp dport $service_vpn dnat $host_vpn
+    iif $interface_wan udp dport $service_vpn dnat $host_vpn
+    # Allow Jenkins
+    iif $interface_wan tcp dport $service_jenkins dnat $host_jenkins:8080
+    # Allow torrents
+    iif $interface_wan tcp dport $service_torrents dnat $host_torrents
+    # Minecraft (app)
+    iif $interface_wan tcp dport $service_minecraft dnat $host_minecraft:25565
+}
